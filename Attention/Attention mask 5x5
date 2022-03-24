@@ -1,3 +1,17 @@
+import tensorflow as tf
+
+LENGTH = 6
+WIDTH = 5
+
+temp_ones = tf.ones([LENGTH])
+temp_3z = tf.concat([tf.zeros([3]),tf.ones([LENGTH-3])], axis=-1)
+temp_4z = tf.concat([tf.zeros([4]),tf.ones([LENGTH-4])], axis=-1)
+temp_5z = tf.concat([tf.zeros([5]),tf.ones([LENGTH-5])], axis=-1)
+print(temp_3z)
+print(temp_4z)
+print(temp_5z)
+
+
 for i in range(LENGTH):
   print("@@@@@@@@@@@@@@@@@@@@", i)
   if i==0 or i==LENGTH-1:                                                       # i가 양끝(1)
