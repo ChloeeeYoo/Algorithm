@@ -12,7 +12,10 @@ Algorithm source code
 
 
 
+
+
 ## Sorting Algorithm
+
 ### Bubble sort
 자료가 이미 정렬되어 있는 최상의 경우, 자료의 이동이 발생하지 않는다.
 ![image](https://user-images.githubusercontent.com/51250746/159931447-5325ad23-0d3f-4a77-9ce8-fd9f2288f655.png)
@@ -28,11 +31,13 @@ Algorithm source code
 참조: https://gmlwjd9405.github.io/2018/05/06/algorithm-insertion-sort.html
 
 
+
 ### Heap sort
 최대 힙 트리나 최소 힙 트리를 구성해 정렬을 하는 알고리즘
 ![image](https://user-images.githubusercontent.com/51250746/159932343-5e482c08-afaa-4937-957b-2b1099fac158.png)
 
 참조: https://gmlwjd9405.github.io/2018/05/10/algorithm-heap-sort.html
+
 
 
 ### Sorting algorithm's Time complexity
