@@ -15,7 +15,7 @@ print(temp_5z)
 for i in range(LENGTH):
   print("@@@@@@@@@@@@@@@@@@@@", i)
   if i==0 or i==LENGTH-1:                                                       # i가 양끝(1)
-    temp_target = tf.tile(temp_3z, [3])                                         #i 양끝(1,1)이라 filter 세로 size - 2
+    temp_target = tf.tile(temp_3z, [3])                                         # i 양끝(1,1)이라 filter 세로 size - 2
     temp_padding = tf.tile(temp_ones, [LENGTH-3])
     if i==0:
       temp = tf.concat([temp_target, temp_padding], axis=-1)
@@ -27,7 +27,7 @@ for i in range(LENGTH):
       print(temp)   #1
       out = tf.concat([out,temp], axis=0)
 
-    temp_target = tf.tile(temp_4z, [3])                                         #i 양끝(1,2)이라 filter 세로 size - 1
+    temp_target = tf.tile(temp_4z, [3])                                         # i 양끝(1,2)이라 filter 세로 size - 2
     temp_padding = tf.tile(temp_ones, [LENGTH-3])
     if i==0:
       temp = tf.concat([temp_target, temp_padding], axis=-1)
