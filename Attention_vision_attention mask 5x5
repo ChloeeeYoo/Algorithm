@@ -1,0 +1,189 @@
+for i in range(LENGTH):
+  print("@@@@@@@@@@@@@@@@@@@@", i)
+  if i==0 or i==LENGTH-1:                                                       # i가 양끝(1)
+    temp_target = tf.tile(temp_3z, [3])                                         #i 양끝(1,1)이라 filter 세로 size - 2
+    temp_padding = tf.tile(temp_ones, [LENGTH-3])
+    if i==0:
+      temp = tf.concat([temp_target, temp_padding], axis=-1)
+      print(temp)   #1
+      out = tf.expand_dims(temp, axis=0)
+    else:
+      temp = tf.concat([temp_padding, temp_target], axis=-1)
+      temp = tf.expand_dims(temp, axis=0)
+      print(temp)   #1
+      out = tf.concat([out,temp], axis=0)
+
+    temp_target = tf.tile(temp_4z, [3])                                         #i 양끝(1,2)이라 filter 세로 size - 1
+    temp_padding = tf.tile(temp_ones, [LENGTH-3])
+    if i==0:
+      temp = tf.concat([temp_target, temp_padding], axis=-1)
+      print(temp)   #1
+      temp = tf.expand_dims(temp, axis=0)
+      out = tf.concat([out,temp], axis=0)
+
+
+    else:
+      temp = tf.concat([temp_padding, temp_target], axis=-1)
+      temp = tf.expand_dims(temp, axis=0)
+      print(temp)   #1
+      out = tf.concat([out,temp], axis=0)
+
+
+
+    for j in range(LENGTH-4):
+      temp_target = tf.roll(temp_5z, shift=j, axis=0)
+      temp_target = tf.tile(temp_target, [3])                                   #i 양끝(1,1)이라 filter 세로 size - 2
+      temp_padding = tf.tile(temp_ones, [LENGTH-3])
+      if i==0:
+        temp = tf.concat([temp_target, temp_padding], axis=-1)       
+      else:
+        temp = tf.concat([temp_padding, temp_target], axis=-1)
+      temp = tf.expand_dims(temp, axis=0)
+      print(temp)   #1
+      out = tf.concat([out,temp], axis=0)
+
+    temp_target = tf.roll(temp_4z, shift=LENGTH-4, axis=0)                      #x축 반전하려면 LENGTH-3
+    temp_target = tf.tile(temp_target, [3])
+    temp_padding = tf.tile(temp_ones, [LENGTH-3])
+    if i==0:
+      temp = tf.concat([temp_target, temp_padding], axis=-1)
+    else:
+      temp = tf.concat([temp_padding, temp_target], axis=-1)
+    temp = tf.expand_dims(temp, axis=0)
+    print(temp)   #1
+    out = tf.concat([out,temp], axis=0)
+
+    temp_target = tf.roll(temp_3z, shift=LENGTH-3, axis=0)                      #x축 반전하려면 LENGTH-3
+    temp_target = tf.tile(temp_target, [3])
+    temp_padding = tf.tile(temp_ones, [LENGTH-3])
+    if i==0: 
+      temp = tf.concat([temp_target, temp_padding], axis=-1)
+    else:
+      temp = tf.concat([temp_padding, temp_target], axis=-1)
+    temp = tf.expand_dims(temp, axis=0)
+    print(temp)   #1
+    out = tf.concat([out,temp], axis=0)
+
+
+
+  elif i==1 or i==LENGTH-2:                                                     #i가 양끝(2)
+    
+    temp_target = tf.tile(temp_3z, [4])                                         #i 양끝(2,1)이라 filter 세로 size - 1
+    temp_padding = tf.tile(temp_ones, [LENGTH-4])
+    if i==1:
+      temp = tf.concat([temp_target, temp_padding], axis=-1)
+      print(temp)   #1
+      temp = tf.expand_dims(temp, axis=0)
+      out = tf.concat([out,temp], axis=0)
+      
+      #print(out) #1
+    else:
+      temp = tf.concat([temp_padding, temp_target], axis=-1)
+      temp = tf.expand_dims(temp, axis=0)
+      print(temp)   #1
+      out = tf.concat([out,temp], axis=0)
+      #print(temp)  #1
+
+    temp_target = tf.tile(temp_4z, [4])                                         #i 양끝(2,2)이라 filter 세로 size - 1
+    temp_padding = tf.tile(temp_ones, [LENGTH-4])
+    if i==1:
+      temp = tf.concat([temp_target, temp_padding], axis=-1)
+      temp = tf.expand_dims(temp, axis=0)
+      print(temp)   #1
+      out = tf.concat([out,temp], axis=0)
+      #print(out) #1
+    else:
+      temp = tf.concat([temp_padding, temp_target], axis=-1)
+      temp = tf.expand_dims(temp, axis=0)
+      print(temp)   #1
+      out = tf.concat([out,temp], axis=0)
+
+    for j in range(LENGTH-4):
+      temp_target = tf.roll(temp_5z, shift=j, axis=0)
+      temp_target = tf.tile(temp_target, [4])                                   #i 양끝(2)이라 filter 세로 size - 1
+      temp_padding = tf.tile(temp_ones, [LENGTH-4])
+      if i==1:
+        temp = tf.concat([temp_target, temp_padding], axis=-1)
+      else:
+        temp = tf.concat([temp_padding, temp_target], axis=-1)
+      temp = tf.expand_dims(temp, axis=0)
+      print(temp)   #1
+      out = tf.concat([out,temp], axis=0)
+      #print(temp) #4
+                                                                                #오른쪽 끝 (2,2)    
+    temp_target = tf.roll(temp_4z, shift=LENGTH-4, axis=0)                      #x축 반전하려면 LENGTH-4
+    temp_target = tf.tile(temp_target, [4])
+    temp_padding = tf.tile(temp_ones, [LENGTH-4])
+    if i==1:
+      temp = tf.concat([temp_target, temp_padding], axis=-1)
+    else:
+      temp = tf.concat([temp_padding, temp_target], axis=-1)
+    temp = tf.expand_dims(temp, axis=0)
+    print(temp)   #1
+    out = tf.concat([out,temp], axis=0)
+                                                                                #오른쪽 끝 (2,1)    
+    temp_target = tf.roll(temp_3z, shift=LENGTH-3, axis=0)                      #x축 반전하려면 LENGTH-3
+    temp_target = tf.tile(temp_target, [4])
+    temp_padding = tf.tile(temp_ones, [LENGTH-4])
+    if i==1:
+      temp = tf.concat([temp_target, temp_padding], axis=-1)
+    else:
+      temp = tf.concat([temp_padding, temp_target], axis=-1)
+    temp = tf.expand_dims(temp, axis=0)
+    print(temp)   #1
+    out = tf.concat([out,temp], axis=0)
+    #print(temp) #2
+
+
+  else:                                                                         # 세로축(i)가 양끝(1 & 2) 아닐 때
+    temp_padding_front = tf.tile(temp_ones, [i-2])                              # 가로축 왼쪽 끝(1)
+    temp_target = tf.tile(temp_3z, [5])                                         # 필터가 온전히 안으로 들어옴
+    temp_padding_back = tf.tile(temp_ones, [LENGTH-3-i])
+    temp = tf.concat([temp_padding_front, temp_target, temp_padding_back], axis=-1)
+    temp = tf.expand_dims(temp, axis=0)
+    print(temp)  #2
+    out = tf.concat([out,temp], axis=0)
+
+    temp_padding_front = tf.tile(temp_ones, [i-2])                              # 가로축 왼쪽 끝(2)
+    temp_target = tf.tile(temp_4z, [5])                                         # 필터가 온전히 안으로 들어옴
+    temp_padding_back = tf.tile(temp_ones, [LENGTH-3-i])
+    temp = tf.concat([temp_padding_front, temp_target, temp_padding_back], axis=-1)
+    temp = tf.expand_dims(temp, axis=0)
+    print(temp)   #1
+    out = tf.concat([out,temp], axis=0)    
+    #print(out)
+
+    for j in range(LENGTH-4):                           # 필터가 온전히 안으로 들어오고 나서는 가로축으로 (length-2) 4개만 수행하면 됨
+      temp_target = tf.roll(temp_5z, shift=j, axis=0)
+      temp_target = tf.tile(temp_target, [5])                                   # filter 세로 size 온전히 다 사용
+      temp_padding_front = tf.tile(temp_ones, [i-2])
+      temp_padding_back = tf.tile(temp_ones, [LENGTH-3-i])
+      temp = tf.concat([temp_padding_front, temp_target, temp_padding_back], axis=-1)
+      temp = tf.expand_dims(temp, axis=0)
+      print(temp)   #1
+      out = tf.concat([out,temp], axis=0)
+
+    temp_target = tf.roll(temp_4z, shift=LENGTH-4, axis=0)                      # 가로축 오른쪽 끝(2)
+    temp_target = tf.tile(temp_target, [5])
+    #temp_padding = tf.tile(temp_ones, [LENGTH-3])
+    temp_padding_front = tf.tile(temp_ones, [i-2])
+    temp_padding_back = tf.tile(temp_ones, [LENGTH-3-i])
+    temp = tf.concat([temp_padding_front, temp_target, temp_padding_back], axis=-1)
+    temp = tf.expand_dims(temp, axis=0)
+    print(temp)   #1
+    out = tf.concat([out,temp], axis=0)
+
+    temp_target = tf.roll(temp_3z, shift=LENGTH-3, axis=0)                      # 가로축 오른쪽 끝(1)
+    temp_target = tf.tile(temp_target, [5])
+    #temp_padding = tf.tile(temp_ones, [LENGTH-3])
+    temp_padding_front = tf.tile(temp_ones, [i-2])
+    temp_padding_back = tf.tile(temp_ones, [LENGTH-3-i])
+    temp = tf.concat([temp_padding_front, temp_target, temp_padding_back], axis=-1)
+    temp = tf.expand_dims(temp, axis=0)
+    print(temp)   #1
+    out = tf.concat([out,temp], axis=0)
+
+
+
+
+print(out)
