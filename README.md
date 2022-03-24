@@ -48,6 +48,11 @@ Algorithm source code
 
 # Stack & Queue
 ## Priority queue
+들어간 순서에 상관없이 우선순위가 높은 데이터가 먼저 나오는 것
+- enqueue: 우선 순위에 맞춰 자리를 찾아감
+- dequeue: 우선순위 큐에서의 pop은 곧, 가장 우선순위가 높은 데이터를 빼낸다는 의미
+
+
 **Applications of priority queue**
 - Data compression: Huffman Coding algorithm
 - Shortest path algorithms: Dijkstra’s algorithm
