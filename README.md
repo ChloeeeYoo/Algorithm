@@ -41,6 +41,7 @@ Algorithm source code
 
 
 ### Sorting algorithm's Time complexity
-![image](https://user-images.githubusercontent.com/51250746/159932553-849fa22d-f7c2-4019-99c9-0faf42b2a94e.png)
+![image](https://user-images.githubusercontent.com/51250746/159945976-f20c8f75-a1a7-495d-9795-5a1a7bdba3aa.png)
+
 
 
