@@ -45,3 +45,12 @@ Algorithm source code
 
 
 
+
+# Stack & Queue
+## Priority queue
+**Applications of priority queue**
+ Data compression: Huffman Coding algorithm
+ Shortest path algorithms: Dijkstra’s algorithm
+ Minimum spanning tree algorithms: Prim’s algorithm
+ Even-driven simulations: Customers in a line
+ Selection problem: Finding k-th smallest element 
