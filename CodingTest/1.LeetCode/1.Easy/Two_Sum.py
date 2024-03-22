@@ -1,3 +1,8 @@
+## Problem
+## https://leetcode.com/problems/two-sum/
+
+## Solution #1
+## O(n^2); Brute Force
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         answer = []
@@ -13,4 +18,18 @@ class Solution:
         return answer
 
 
-## https://leetcode.com/problems/two-sum/
+## Solution #2
+## O(n); Hash Table
+## **point** dictionary <- hash table, if search both idx and val
+## **point** list enumerate (idx, val)
+## **point** target - value
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        dic = {}
+
+        for idx, val in enumerate (nums):
+            if target - val in dic:
+                return [idx, dic[target - val]]
+            
+            dic[val] = idx
