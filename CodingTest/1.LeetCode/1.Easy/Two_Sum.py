@@ -32,4 +32,6 @@ class Solution:
             if target - val in dic:
                 return [idx, dic[target - val]]
             
-            dic[val] = idx
+            dic[val] = idx        
+            ## dictionary는 key값으로 -> value 값 조회 가능. (value로 -> key값 조회 불가)
+            ## 우리가 최종적으로 return 해야 하는 값은 index 값이므로 index를 dictionary의 value에 넣음
